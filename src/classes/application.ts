@@ -1,6 +1,7 @@
 import express from 'express'
+import expressGraphQL from 'express-graphql'
 import config from '../env'
-
+import schema from '../graphql/schema'
 // setup environment
 config() 
 
@@ -9,8 +10,20 @@ config()
  */
 class Application{
   public app = express()
-  constructor(){ 
-  this.app.listen(process.env.PORT, () => {console.log('Application running on port: ' + process.env.PORT)})    
+  constructor(){
+    this.setup() 
+    this.app.listen(process.env.PORT, () => {console.log('Application running on port: ' + process.env.PORT)})    
+  }
+
+  /**
+   * function to add all middleware to the express application
+   */
+
+  private setup () {
+    this.app.use('/graphql', expressGraphQL({
+      graphiql: true,
+      schema
+    }))  
   }
 
 }
