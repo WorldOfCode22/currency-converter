@@ -4,7 +4,8 @@
   "description": "A application to convert currency",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watchApi": " cd build && set NODE_ENV=development && nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -12,7 +13,7 @@
   },
   "keywords": [
     "currency-converter",
-    "conver",
+    "convert",
     "graphql",
     "react"
   ],
