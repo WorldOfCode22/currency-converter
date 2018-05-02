@@ -7,7 +7,7 @@ export default new GraphQLObjectType({
     fromCurrencyName: {type: GraphQLString},
     toCurrencyCode: {type: GraphQLString},
     toCurrencyName: {type: GraphQLString},
-    exchangeRate: {type: GraphQLInt},
+    exchangeRate: {type: GraphQLString},
     lastRefreshed: {type: GraphQLString},
     timeZone: {type: GraphQLString}
   }
