@@ -1,6 +1,6 @@
 - Any user can convert any 2 currencies.
 - Data will be sent to the user via GraphQL.
-- The server will convert a JSON API to a GraphQL API.
+- The server will convert a JSON API to a GraphQL API. (Done)
 - A user can register.
 - A user can sign in and receive a JSON Web Token.
 - A signed in user can make a watch request.
