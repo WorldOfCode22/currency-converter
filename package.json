@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watchApi": " cd build && set NODE_ENV=development && nodemon app.js"
+    "watchApi": " cd build && set NODE_ENV=development && nodemon app.js",
+    "watchReact": "cd client && npm start",
+    "development": "concurrently \"npm run watchApi\" \"npm run watchReact\" "
   },
   "repository": {
     "type": "git",
