@@ -47,7 +47,7 @@ const Form = (props) => {
         <Input readOnly='true' />
       </InputGroup>
       <br />
-      <Button color='success'>Convert!</Button>
+      <Button color='success' onClick={() => { conversion.exchange() }}>Exchange!</Button>
     </div>
   )
 }
