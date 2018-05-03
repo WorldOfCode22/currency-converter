@@ -1,5 +1,6 @@
 import express from 'express'
 import expressGraphQL from 'express-graphql'
+import cors from 'cors'
 import config from '../env'
 import schema from '../graphql/schema'
 // setup environment
@@ -20,6 +21,7 @@ class Application{
    */
 
   private setup () {
+    this.app.use(cors())
     this.app.use('/graphql', expressGraphQL({
       graphiql: true,
       schema
