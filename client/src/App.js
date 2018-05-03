@@ -17,11 +17,44 @@ class App extends Component {
       toCurrencyCode: 'FKP',
       changeToCurrencyCode: this.changeToCurrencyCode.bind(this),
       toCurrencyDropdownOpen: false,
-      toCurrencyDropdownToggle: this.toggleToCurrencyDropdown.bind(this)
+      toCurrencyDropdownToggle: this.toggleToCurrencyDropdown.bind(this),
+      exchange: this.convertCurrency.bind(this),
+      requestLoading: false,
+      exchangeRate: null
     }
     this.state = { conversionForm }
   }
 
+  convertCurrency () {
+    const {conversionForm} = this.state
+    conversionForm.requestLoading = true
+    this.setState({conversionForm})
+    let query = `{
+      CurrencyExchange(fromCountry: "${conversionForm.fromCurrencyCode}", toCountry: "${conversionForm.toCurrencyCode}" ) {
+        exchangeRate
+      }
+    }`
+
+    if (window.fetch) {
+      window.fetch('http://localhost:80/graphql', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({query: query})
+      })
+        .then(
+          (response) => { return response.json() },
+          err => { console.log(err) }
+        )
+        .then(
+          (data) => {
+            conversionForm.requestLoading = false
+            conversionForm.exchangeRate = data.data.exchangeRate
+            this.setState({conversionForm})
+          },
+          err => { console.log(err) }
+        )
+    }
+  }
   changeFromCurrencyCode (name) {
     const {conversionForm} = this.state
     conversionForm.fromCurrencyCode = name
