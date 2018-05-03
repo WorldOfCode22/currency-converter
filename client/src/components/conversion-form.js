@@ -32,7 +32,7 @@ const Form = (props) => {
             {getFromCurrencyDropdownCodes(conversion)}
           </DropdownMenu>
         </InputGroupButtonDropdown>
-        <Input />
+        <Input value={conversion.fromCountryValue} onChange={(event) => { conversion.fromCountryOnChange(event) }} />
       </InputGroup>
       <br />
       <InputGroup>

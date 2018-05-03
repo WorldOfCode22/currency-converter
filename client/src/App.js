@@ -14,6 +14,8 @@ class App extends Component {
       changeFromCurrencyCode: this.changeFromCurrencyCode.bind(this),
       fromCurrencyDropdownOpen: false,
       fromCurrencyDropdownToggle: this.toggleFromCurrencyDropdown.bind(this),
+      fromCountryValue: '',
+      fromCountryOnChange: this.fromCountryOnChange.bind(this),
       toCurrencyCode: 'FKP',
       changeToCurrencyCode: this.changeToCurrencyCode.bind(this),
       toCurrencyDropdownOpen: false,
@@ -25,6 +27,11 @@ class App extends Component {
     this.state = { conversionForm }
   }
 
+  fromCountryOnChange (event) {
+    const {conversionForm} = this.state
+    conversionForm.fromCountryValue = event.target.value
+    this.setState({conversionForm})
+  }
   convertCurrency () {
     const {conversionForm} = this.state
     conversionForm.requestLoading = true
