@@ -22,7 +22,8 @@ class App extends Component {
       toCurrencyDropdownToggle: this.toggleToCurrencyDropdown.bind(this),
       exchange: this.convertCurrency.bind(this),
       requestLoading: false,
-      exchangeRate: null
+      exchangeRate: null,
+      result: 0
     }
     this.state = { conversionForm }
   }
@@ -55,7 +56,8 @@ class App extends Component {
         .then(
           (data) => {
             conversionForm.requestLoading = false
-            conversionForm.exchangeRate = data.data.exchangeRate
+            conversionForm.exchangeRate = data.data.CurrencyExchange.exchangeRate
+            conversionForm.result = parseInt(conversionForm.fromCountryValue, 10) * conversionForm.exchangeRate
             this.setState({conversionForm})
           },
           err => { console.log(err) }

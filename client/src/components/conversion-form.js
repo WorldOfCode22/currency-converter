@@ -44,8 +44,9 @@ const Form = (props) => {
             {getToCurrencyDropdownCodes(conversion)}
           </DropdownMenu>
         </InputGroupButtonDropdown>
-        <Input readOnly='true' />
+        <Input readOnly='true' value={conversion.result} />
       </InputGroup>
+      <p>Exchange Rate: {conversion.exchangeRate}</p>
       <br />
       <Button color='success' onClick={() => { conversion.exchange() }}>Exchange!</Button>
     </div>
