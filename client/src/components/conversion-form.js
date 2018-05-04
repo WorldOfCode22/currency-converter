@@ -19,6 +19,17 @@ const getToCurrencyDropdownCodes = (conversion) => {
   return jsxCurrencyCodes
 }
 
+const LoadOrForm = (props) => {
+  const {conversion} = props
+  if (conversion.requestLoading) {
+    return (
+      <h5 className='text-center'>Please wait request loading</h5>
+    )
+  }
+  return (
+    <Form conversion={conversion} />
+  )
+}
 const Form = (props) => {
   const {conversion} = props
   return (
@@ -48,7 +59,7 @@ const Form = (props) => {
         </InputGroupButtonDropdown>
         <Input readOnly='true' value={conversion.result} />
       </InputGroup>
-      <p>Exchange Rate: {conversion.exchangeRate}</p>
+      <h5>Exchange Rate: {conversion.exchangeRate}</h5>
       <br />
       <Button color='success' onClick={() => { conversion.exchange() }}>Exchange!</Button>
     </div>
@@ -62,7 +73,7 @@ const ConversionForm = () => {
         <Row>
           <Col />
           <Col>
-            <Form conversion={conversion} />
+            <LoadOrForm conversion={conversion}/>
           </Col>
           <Col />
         </Row>
