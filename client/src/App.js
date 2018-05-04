@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Container} from 'reactstrap'
 import ConversionForm from './components/conversion-form'
+import Header from './components/header'
 
 import './App.css'
 
@@ -94,6 +95,7 @@ class App extends Component {
     return (
       <ConversionFormContext.Provider value={this.state.conversionForm}>
         <Container>
+          <Header />
           <ConversionForm />
         </Container>
       </ConversionFormContext.Provider>
