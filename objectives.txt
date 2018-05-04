@@ -1,3 +1,5 @@
 - Any user can convert any 2 currencies. (Done)
 - Data will be sent to the user via GraphQL. (Done)
 - The server will convert a JSON API to a GraphQL API. (Done)
+- Add a loading spinner. 
+- Add Error message on gql error.
