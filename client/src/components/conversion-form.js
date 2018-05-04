@@ -6,7 +6,7 @@ import currencyCodes from '../currency'
 const getFromCurrencyDropdownCodes = (conversion) => {
   let jsxCurrencyCodes = []
   for (let i = 0; i < currencyCodes.length; i++) {
-    jsxCurrencyCodes.push(<DropdownItem key={i} onClick={() => { conversion.changeFromCurrencyCode(currencyCodes[i]['currency code']) }}>{currencyCodes[i]['currency code']}</DropdownItem>)
+    jsxCurrencyCodes.push(<DropdownItem key={i} onClick={() => { conversion.changeFromCurrencyCode(currencyCodes[i]['currency code'], currencyCodes[i]['currency name']) }}>{currencyCodes[i]['currency code']}</DropdownItem>)
   }
   return jsxCurrencyCodes
 }
@@ -14,7 +14,7 @@ const getFromCurrencyDropdownCodes = (conversion) => {
 const getToCurrencyDropdownCodes = (conversion) => {
   let jsxCurrencyCodes = []
   for (let i = 0; i < currencyCodes.length; i++) {
-    jsxCurrencyCodes.push(<DropdownItem key={i} onClick={() => { conversion.changeToCurrencyCode(currencyCodes[i]['currency code']) }}>{currencyCodes[i]['currency code']}</DropdownItem>)
+    jsxCurrencyCodes.push(<DropdownItem key={i} onClick={() => { conversion.changeToCurrencyCode(currencyCodes[i]['currency code'], currencyCodes[i]['currency name']) }}>{currencyCodes[i]['currency code']}</DropdownItem>)
   }
   return jsxCurrencyCodes
 }
@@ -23,6 +23,7 @@ const Form = (props) => {
   const {conversion} = props
   return (
     <div>
+      <h5>{conversion.fromCurrencyName}</h5>
       <InputGroup>
         <InputGroupButtonDropdown color='info' isOpen={conversion.fromCurrencyDropdownOpen} toggle={conversion.fromCurrencyDropdownToggle} addonType='append'>
           <DropdownToggle caret>
@@ -35,6 +36,7 @@ const Form = (props) => {
         <Input value={conversion.fromCountryValue} onChange={(event) => { conversion.fromCountryOnChange(event) }} />
       </InputGroup>
       <br />
+      <h5>{conversion.toCurrencyName}</h5>
       <InputGroup>
         <InputGroupButtonDropdown color='info' isOpen={conversion.toCurrencyDropdownOpen} toggle={conversion.toCurrencyDropdownToggle} addonType='append'>
           <DropdownToggle caret>

@@ -11,12 +11,14 @@ class App extends Component {
     super(props)
     const conversionForm = {
       fromCurrencyCode: 'USD',
+      fromCurrencyName: 'United States Dollar',
       changeFromCurrencyCode: this.changeFromCurrencyCode.bind(this),
       fromCurrencyDropdownOpen: false,
       fromCurrencyDropdownToggle: this.toggleFromCurrencyDropdown.bind(this),
       fromCountryValue: '',
       fromCountryOnChange: this.fromCountryOnChange.bind(this),
       toCurrencyCode: 'FKP',
+      toCurrencyName: 'Falkland Islands Pound',
       changeToCurrencyCode: this.changeToCurrencyCode.bind(this),
       toCurrencyDropdownOpen: false,
       toCurrencyDropdownToggle: this.toggleToCurrencyDropdown.bind(this),
@@ -64,15 +66,17 @@ class App extends Component {
         )
     }
   }
-  changeFromCurrencyCode (name) {
+  changeFromCurrencyCode (code, name) {
     const {conversionForm} = this.state
-    conversionForm.fromCurrencyCode = name
+    conversionForm.fromCurrencyCode = code
+    conversionForm.fromCurrencyName = name
     this.setState({conversionForm})
   }
 
-  changeToCurrencyCode (name) {
+  changeToCurrencyCode (code, name) {
     const {conversionForm} = this.state
-    conversionForm.toCurrencyCode = name
+    conversionForm.toCurrencyCode = code
+    conversionForm.toCurrencyName = name
     this.setState({conversionForm})
   }
 
